@@ -1,0 +1,16 @@
+.btn {
+  border: none;
+  padding: 12px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.btn-danger {
+  background-color: red;
+  color: white;
+}
