@@ -1,19 +1,15 @@
 import React from "react";
 
 function App() {
-  // [false, true]
-  const [isVisible, setIsVisible] = React.useState(false);
+  // const [firstName, setFirstName] = React.useState("");
+  // const [lastName, setLastName] = React.useState("");
+  const [person, setPerson] = React.useState({
+    firstName: " ",
+    lastName: " ",
+  });
+  const [isLoading, setIsLoading] = React.useState("");
 
-  function handleClick() {
-    setIsVisible(true);
-    console.log(isVisible);
-  }
-
-  return (
-    <div>
-      <button onClick={handleClick}>Show</button>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default App;
