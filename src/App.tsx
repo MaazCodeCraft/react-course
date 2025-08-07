@@ -1,13 +1,22 @@
 import React from "react";
 
 function App() {
-  // const [firstName, setFirstName] = React.useState("");
-  // const [lastName, setLastName] = React.useState("");
-  const [person, setPerson] = React.useState({
-    firstName: " ",
-    lastName: " ",
+  const [game, setGame] = React.useState({
+    id: 1,
+    player: {
+      name: "jhon",
+    },
   });
-  const [isLoading, setIsLoading] = React.useState("");
+
+  const handleClick = () => {
+    setGame({
+      ...game,
+      player: {
+        ...game.player,
+        name: "Bob",
+      },
+    });
+  };
 
   return <div></div>;
 }
