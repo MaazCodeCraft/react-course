@@ -1,8 +1,5 @@
-let count = 0;
-
 function Message() {
-  console.log("Message called", count);
-
+  let count = 0;
   count++;
   return <div>Message {count}</div>;
 }
