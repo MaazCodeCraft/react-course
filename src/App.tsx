@@ -1,11 +1,14 @@
-import Message from "./Message";
+import React from "react";
+import NavBar from "./components/NavBar";
+import Cart from "./components/Cart";
 
 function App() {
+  const [cartItems, setCartItems] = React.useState(["Product1", "Product2"]);
+
   return (
     <div>
-      <Message />
-      <Message />
-      <Message />
+      <NavBar cartItemsCount={cartItems.length} />
+      <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
     </div>
   );
 }
