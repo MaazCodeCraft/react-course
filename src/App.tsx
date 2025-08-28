@@ -40,7 +40,7 @@ function App() {
     setUsers(users.filter((u) => u.id !== user.id));
 
     axios
-      .delete("https://jsonplaceholder.typicode.com/users" + user.id)
+      .delete("https://jsonplaceholder.typicode.com/users/" + user.id)
       .catch((err) => {
         setError(err.message);
         setUsers(orignalUsers);
@@ -53,8 +53,24 @@ function App() {
     setUsers([newUser, ...users]);
 
     axios
-      .post("https://jsonplaceholder.typicode.com/users", newUser)
+      .post("https://jsonplaceholder.typicode.com/users/", newUser)
       .then(({ data: savedUser }) => setUsers([savedUser, ...users]))
+      .catch((err) => {
+        setError(err.message);
+        setUsers(orignalUsers);
+      });
+  };
+
+  const updateUser = (user: User) => {
+    const orignalUsers = [...users];
+    const updatedUser = { ...user, name: user.name + "!" };
+    setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
+
+    axios
+      .patch(
+        "https://jsonplaceholder.typicode.com/users/" + user.id,
+        updatedUser
+      )
       .catch((err) => {
         setError(err.message);
         setUsers(orignalUsers);
@@ -77,12 +93,20 @@ function App() {
             className="list-group-item d-flex justify-content-between"
           >
             {user.name}
-            <button
-              className="btn btn-outline-danger"
-              onClick={() => deleteUser(user)}
-            >
-              Delete
-            </button>{" "}
+            <div>
+              <button
+                className="btn btn-outline-secondary mx-1"
+                onClick={() => updateUser(user)}
+              >
+                Update
+              </button>
+              <button
+                className="btn btn-outline-danger"
+                onClick={() => deleteUser(user)}
+              >
+                Delete
+              </button>{" "}
+            </div>
           </li>
         ))}
       </ul>
